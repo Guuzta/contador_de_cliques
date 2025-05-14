@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('partials/head')%>
+</head>
+
+<body>
+
+    <header class="header">
+        <img class="headerLogo" src="../img/headerLogo.png" alt="headerLogo">
+
+        <nav class="navBar">
+            <ul class="linkList">
+                <li>
+                    <a href="/">Página Inicial</a>
+                </li>
+
+                <li>
+                    <a href="#">Ranking</a>
+                </li>
+
+                <li>
+                    <a href="#">Configurações</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="gameContent">
+
+        <div class="gameInfo">
+
+            <div class="time">
+                <span>10</span>
+            </div>
+
+
+          <div class="scoreInfo">
+                <div class="previousScore">
+                    <span>
+                        <p>Pontuação Anterior</p>
+                        <p>10</p>
+                    </span>
+                </div>
+                <div class="currentScore">
+                    <span>
+                    <p>Cliques</p>
+                    <p>10</p>
+                    </span>
+                </div>
+          </div>
+
+
+        </div>
+
+        <div class="clickArea">
+            <h1><span>TESTE DE</span> VELOCIDADE</h1>
+
+            <div class="circleBackground">
+                <div class="circle" id="circle">
+                   <p>Clique para começar o teste</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="gameSetting">
+            <div class="timer">
+                <span>15 seg</span>
+            </div>
+            <div class="timer">
+                <span>20 seg</span>
+            </div>
+            <div class="timer">
+                <span>30 seg</span>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

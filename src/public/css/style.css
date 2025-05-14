@@ -215,4 +215,175 @@
   display: inline;
   color: #f2c145;
   font-weight: bold;
+}
+
+body {
+  background-color: #151136;
+}
+
+.header {
+  background-color: #30296b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.header .headerLogo {
+  width: 200px;
+  cursor: pointer;
+}
+.header .navBar .linkList {
+  list-style: none;
+  display: flex;
+}
+.header .navBar .linkList li {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  transition: all ease 300ms;
+}
+.header .navBar .linkList li:hover {
+  background-color: #f2c145;
+}
+.header .navBar .linkList li:hover a {
+  color: #151136;
+  font-weight: bold;
+}
+.header .navBar .linkList li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  width: 100px;
+  height: 100px;
+}
+
+.gameContent {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 90vh;
+}
+.gameContent .gameInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gameContent .gameInfo .time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 4px dashed #30296b;
+  border-radius: 50%;
+  text-align: center;
+}
+.gameContent .gameInfo .time span {
+  color: #f2c145;
+  font-size: 30px;
+  font-weight: bold;
+}
+.gameContent .gameInfo .scoreInfo {
+  display: flex;
+  margin-top: 60px;
+}
+.gameContent .gameInfo .scoreInfo .previousScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  padding: 10px 0;
+  width: 130px;
+  border: 4px dashed #30296b;
+  border-radius: 5px;
+  text-align: center;
+}
+.gameContent .gameInfo .scoreInfo .previousScore p {
+  margin-bottom: 5px;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+.gameContent .gameInfo .scoreInfo .currentScore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  width: 130px;
+  height: 100px;
+  border: 4px dashed #30296b;
+  border-radius: 5px;
+  text-align: center;
+}
+.gameContent .gameInfo .scoreInfo .currentScore p {
+  margin-bottom: 5px;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+.gameContent .gameSetting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameContent .gameSetting .timer {
+  margin: 0 10px;
+  border: 2px dashed #f2c145;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+}
+.gameContent .gameSetting .timer:hover {
+  background-color: #f2c145;
+  cursor: pointer;
+  font-weight: bold;
+}
+.gameContent .clickArea h1 {
+  margin-bottom: 30px;
+  color: #f2c145;
+}
+.gameContent .clickArea h1 span {
+  color: white;
+}
+.gameContent .clickArea .circleBackground {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #151136;
+  width: 350px;
+  height: 350px;
+  border: 4px dashed #7e75c7;
+  border-radius: 50%;
+}
+.gameContent .clickArea .circleBackground .circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #30296b;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.gameContent .clickArea .circleBackground .circle .rippleAnimation {
+  background-color: #f2c145;
+  border-radius: 50%;
+  transform: scale(0);
+  position: absolute;
+  pointer-events: none;
+  animation-name: ripple;
+  animation-duration: 400ms;
+  animation-timing-function: linear;
+}
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+.gameContent .clickArea .circleBackground .circle p {
+  color: #7e75c7;
 }/*# sourceMappingURL=style.css.map */

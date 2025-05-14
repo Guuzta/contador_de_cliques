@@ -8,6 +8,7 @@
     }
 }
 
+
 .backgroundAnimation {
     position: fixed;
     width: 100vw;
@@ -16,17 +17,18 @@
     left: 0;
     background: #151136;
     overflow: hidden;
+
     & span {
-    width: 4vmin;
-    height: 4vmin;
-    border-radius: 4vmin;
-    backface-visibility: hidden;
-    position: absolute;
-    animation: move;
-    animation-duration: 45;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
+        width: 4vmin;
+        height: 4vmin;
+        border-radius: 4vmin;
+        backface-visibility: hidden;
+        position: absolute;
+        animation: move;
+        animation-duration: 45;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
 
 
     & span:nth-child(0) {
@@ -38,6 +40,7 @@
         transform-origin: 10vw -15vh;
         box-shadow: -8vmin 0 1.0811228211689081vmin currentColor;
     }
+
     & span:nth-child(1) {
         color: #30296b;
         top: 71%;
@@ -47,6 +50,7 @@
         transform-origin: -9vw 14vh;
         box-shadow: 8vmin 0 1.4450009934038013vmin currentColor;
     }
+
     & span:nth-child(2) {
         color: #f2c145;
         top: 59%;
@@ -56,6 +60,7 @@
         transform-origin: 12vw 19vh;
         box-shadow: -8vmin 0 1.871800152030613vmin currentColor;
     }
+
     & span:nth-child(3) {
         color: #f2c145;
         top: 36%;
@@ -65,6 +70,7 @@
         transform-origin: -17vw 23vh;
         box-shadow: -8vmin 0 1.1386165566694193vmin currentColor;
     }
+
     & span:nth-child(4) {
         color: #f2c145;
         top: 48%;
@@ -74,6 +80,7 @@
         transform-origin: 11vw 11vh;
         box-shadow: 8vmin 0 1.689422332571153vmin currentColor;
     }
+
     & span:nth-child(5) {
         color: #30296b;
         top: 13%;
@@ -83,6 +90,7 @@
         transform-origin: -7vw -13vh;
         box-shadow: -8vmin 0 1.7267598924006018vmin currentColor;
     }
+
     & span:nth-child(6) {
         color: #30296b;
         top: 8%;
@@ -92,6 +100,7 @@
         transform-origin: 16vw 8vh;
         box-shadow: 8vmin 0 1.7470367933311095vmin currentColor;
     }
+
     & span:nth-child(7) {
         color: #30296b;
         top: 2%;
@@ -101,6 +110,7 @@
         transform-origin: -18vw -12vh;
         box-shadow: 8vmin 0 1.243182822204676vmin currentColor;
     }
+
     & span:nth-child(8) {
         color: #30296b;
         top: 3%;
@@ -110,6 +120,7 @@
         transform-origin: -13vw 2vh;
         box-shadow: -8vmin 0 1.0859719098635456vmin currentColor;
     }
+
     & span:nth-child(9) {
         color: #f2c145;
         top: 60%;
@@ -119,6 +130,7 @@
         transform-origin: -18vw -8vh;
         box-shadow: -8vmin 0 1.445452123151048vmin currentColor;
     }
+
     & span:nth-child(10) {
         color: #f2c145;
         top: 79%;
@@ -128,6 +140,7 @@
         transform-origin: 22vw 18vh;
         box-shadow: 8vmin 0 1.8201460712546047vmin currentColor;
     }
+
     & span:nth-child(11) {
         color: #30296b;
         top: 48%;
@@ -137,6 +150,7 @@
         transform-origin: -4vw -1vh;
         box-shadow: -8vmin 0 1.623654067727173vmin currentColor;
     }
+
     & span:nth-child(12) {
         color: #30296b;
         top: 91%;
@@ -149,8 +163,6 @@
 
 
 }
-
-
 
 .boxForm {
     display: flex;
@@ -222,12 +234,223 @@
                 display: inline;
                 color: $secondary-color;
                 font-weight: bold;
-                
+
             }
         }
-        
+
     }
 }
 
+body {
+    background-color: $primary-color;
+
+}
+
+.header {
+    background-color: $primary-light;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    .headerLogo {
+        width: 200px;
+        cursor: pointer;
+    }
+
+    .navBar {
+
+        .linkList {
+            list-style: none;
+            display: flex;
+
+            li {
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+                transition: all ease 300ms;
+
+                &:hover {
+                    background-color: $secondary-color;
+
+                    a {
+                        color: $primary-color;
+                        font-weight: bold;
+                    }
+                }
+
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
+                    text-decoration: none;
+                    width: 100px;
+                    height: 100px;
+                    
+                }
+            }
+        }
+    }
+}
+
+.gameContent {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 90vh;
+
+    .gameInfo {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .time {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            border: 4px dashed $primary-light;
+            border-radius: 50%;
+            text-align: center;
+
+            span {
+                color: $secondary-color;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+
+        .scoreInfo {
+
+            display: flex;
+            margin-top: 60px;
+
+            .previousScore {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 20px;
+                padding: 10px 0;
+                width: 130px;
+                border: 4px dashed $primary-light;
+                border-radius: 5px;
+                text-align: center;
+
+                p {
+                    margin-bottom: 5px;
+                    color: white;
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+            }
+
+            .currentScore {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px 0;
+                width: 130px;
+                height: 100px;
+                border: 4px dashed $primary-light;
+                border-radius: 5px;
+                text-align: center;
+
+                p {
+                    margin-bottom: 5px;
+                    color: white;
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
 
 
+    .gameSetting {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .timer {
+            margin: 0 10px;
+            border: 2px dashed $secondary-color;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .timer:hover {
+            background-color: $secondary-color;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    }
+
+    .clickArea {
+
+        h1 {
+            margin-bottom: 30px;
+            color: $secondary-color;
+
+            span {
+                color: white;
+            }
+        }
+
+        .circleBackground {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primary-color;
+            width: 350px;
+            height: 350px;
+            border: 4px dashed $primary-lighter;
+            border-radius: 50%;
+
+            .circle {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $primary-light;
+                width: 320px;
+                height: 320px;
+                border-radius: 50%;
+                overflow: hidden;
+
+
+
+
+                .rippleAnimation {
+                    background-color: $secondary-color;
+                    border-radius: 50%;
+                    transform: scale(0);
+                    position: absolute;
+                    pointer-events: none;
+
+                    animation-name: ripple;
+                    animation-duration: 400ms;
+                    animation-timing-function: linear;
+                }
+
+                @keyframes ripple {
+                    to {
+                        transform: scale(2.5);
+                        opacity: 0;
+                    }
+                }
+
+                p {
+                    color: $primary-lighter;
+                }
+
+            }
+        }
+
+
+    }
+
+}
