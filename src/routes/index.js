@@ -14,4 +14,11 @@ router.get('/register', (req,res) => {
     })
 })
 
+//pagina do jogo
+router.get('/clickcounter' , (req, res) => {
+    res.render('clickCounter', {
+        title: 'Contador De Cliques'
+    })
+})
+
 module.exports = router
