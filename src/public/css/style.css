@@ -329,7 +329,7 @@ body {
   align-items: center;
 }
 .gameContent .gameSetting .timer {
-  margin: 0 10px;
+  margin-right: 15px;
   border: 2px dashed #f2c145;
   padding: 15px;
   border-radius: 10px;
@@ -348,6 +348,7 @@ body {
   color: white;
 }
 .gameContent .clickArea .circleBackground {
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,9 +357,25 @@ body {
   height: 350px;
   border: 4px dashed #7e75c7;
   border-radius: 50%;
+  z-index: 1;
 }
-.gameContent .clickArea .circleBackground .circle {
+.gameContent .clickArea .circleBackground.rotate {
+  transform: rotate(0);
+  animation-name: rotate;
+  animation-duration: 1300ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes rotate {
+  to {
+    rotate: 360deg;
+  }
+}
+.gameContent .clickArea .circle {
   position: relative;
+  left: 15px;
+  top: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -367,8 +384,13 @@ body {
   height: 320px;
   border-radius: 50%;
   overflow: hidden;
+  transform: rotate(0);
+  z-index: 2;
 }
-.gameContent .clickArea .circleBackground .circle .rippleAnimation {
+.gameContent .clickArea .circle p {
+  pointer-events: none;
+}
+.gameContent .clickArea .circle .rippleAnimation {
   background-color: #f2c145;
   border-radius: 50%;
   transform: scale(0);
@@ -384,6 +406,6 @@ body {
     opacity: 0;
   }
 }
-.gameContent .clickArea .circleBackground .circle p {
+.gameContent .clickArea .circle p {
   color: #7e75c7;
 }/*# sourceMappingURL=style.css.map */
