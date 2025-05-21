@@ -6,7 +6,6 @@
 </head>
 
 <body>
-
     <header class="header">
         <img class="headerLogo" src="../img/headerLogo.png" alt="headerLogo">
 
@@ -31,22 +30,22 @@
 
         <div class="gameInfo">
 
-            <div class="time">
+            <div class="time" id="time">
                 <span>10</span>
             </div>
 
 
             <div class="scoreInfo">
-                <div class="previousScore">
+                <div class="previousScore" id="previousScore">
                     <span>
                         <p>Pontuação Anterior</p>
-                        <p>10</p>
+                        <p>0</p>
                     </span>
                 </div>
-                <div class="currentScore">
+                <div class="currentScore" id="currentScore">
                     <span>
                         <p>Cliques</p>
-                        <p>10</p>
+                        <p>0</p>
                     </span>
                 </div>
             </div>
@@ -66,7 +65,7 @@
 
         </div>
 
-        <div class="gameSetting">
+        <div class="gameSetting" id="gameSetting">
             <div class="timer">
                 <span>15 seg</span>
             </div>
@@ -80,7 +79,10 @@
 
     </main>
 
-    <script type="module" src="/js/script.js"></script>
+
+    <script src="/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

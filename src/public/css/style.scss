@@ -380,6 +380,16 @@ body {
             padding: 15px;
             border-radius: 10px;
             color: white;
+
+            &.selected {
+                background-color: $secondary-color;
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            span {
+                pointer-events: none;
+            }
         }
 
         .timer:hover {
@@ -478,4 +488,20 @@ body {
 
     }
 
+}
+
+.swal2-popup {
+    background-color: $primary-color;
+}
+
+.swal2-title {
+    color: $secondary-color;
+}
+
+.swal2-html-container {
+    color: white;
+}
+
+.swal2-actions {
+    margin-top: 40px;
 }

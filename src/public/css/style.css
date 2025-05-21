@@ -335,6 +335,14 @@ body {
   border-radius: 10px;
   color: white;
 }
+.gameContent .gameSetting .timer.selected {
+  background-color: #f2c145;
+  cursor: pointer;
+  font-weight: bold;
+}
+.gameContent .gameSetting .timer span {
+  pointer-events: none;
+}
 .gameContent .gameSetting .timer:hover {
   background-color: #f2c145;
   cursor: pointer;
@@ -408,4 +416,20 @@ body {
 }
 .gameContent .clickArea .circle p {
   color: #7e75c7;
+}
+
+.swal2-popup {
+  background-color: #151136;
+}
+
+.swal2-title {
+  color: #f2c145;
+}
+
+.swal2-html-container {
+  color: white;
+}
+
+.swal2-actions {
+  margin-top: 40px;
 }/*# sourceMappingURL=style.css.map */
