@@ -112,7 +112,7 @@ const clickCounter = {
         this.$circle.addEventListener('click', this.events.scoreInfo.bind(this), { once: true })
 
         this.$circle.addEventListener('click', this.events.circle_click.bind(this))
-        
+
 
     },
 
@@ -134,7 +134,7 @@ const clickCounter = {
             const list = e.target.parentNode
             const itens = Array.from(list.children)
             const index = itens.indexOf(timer)
-            
+
             itens.forEach((item) => {
                 if (item.classList.contains('selected')) {
                     item.classList.remove('selected')
@@ -157,7 +157,7 @@ const clickCounter = {
                 case 2:
                     this.seconds = 4
                     this.events.restartGame()
-                    
+
                     break;
             }
 
@@ -193,10 +193,12 @@ const clickCounter = {
 
             this.secondsInterval = self.seconds
 
+            clearTimeout(this.timeOutId)
+            clearInterval(this.intervalId)
+
             this.intervalId = setInterval(this.timeRemaining.bind(this), 1000)
 
             this.timeOutId = setTimeout(this.popUp.bind(self), self.milliseconds)
-
 
         },
 
@@ -244,6 +246,7 @@ const clickCounter = {
         },
 
         timeRemaining: function () {
+            console.log('teste')
             const self = this.base()
             this.secondsInterval--
             self.$time.innerHTML = `<span>${this.secondsInterval}</span>`
@@ -255,13 +258,14 @@ const clickCounter = {
             if (this.timeOutId) {
                 self.clicks = 0
                 self.events.secondsInterval = self.seconds
+
                 clearTimeout(this.timeOutId)
                 clearInterval(this.intervalId)
 
-                console.log(this.timeOutId)
+                this.intervalId = ''
 
                 self.$circle.addEventListener('click', self.events.scoreInfo.bind(self), { once: true })
-               
+
 
                 self.$currentScore.innerHTML = `
                     <span>
