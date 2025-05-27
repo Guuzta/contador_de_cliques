@@ -42,7 +42,6 @@ const circleAnimation = {
 
         rippleAnimation: function (e) {
 
-            console.log(e.target.firstElementChild)
 
             this.animations.backgroundAnimation()
 
@@ -74,8 +73,12 @@ const circleAnimation = {
             self.$circleBackground.classList.add('rotate')
         },
 
-        resetAnimation: function () {
-            console.log('cu largo')
+        resetAnimation: function (e) {
+            const self = this.base()
+            const circleText = self.$circle.firstElementChild
+
+            self.$circleBackground.classList.remove('rotate')
+            circleText.style.display = 'block'
         }
 
     }
@@ -109,6 +112,7 @@ const clickCounter = {
         this.$circle.addEventListener('click', this.events.scoreInfo.bind(this), { once: true })
 
         this.$circle.addEventListener('click', this.events.circle_click.bind(this))
+        
 
     },
 
@@ -130,7 +134,7 @@ const clickCounter = {
             const list = e.target.parentNode
             const itens = Array.from(list.children)
             const index = itens.indexOf(timer)
-
+            
             itens.forEach((item) => {
                 if (item.classList.contains('selected')) {
                     item.classList.remove('selected')
@@ -143,16 +147,17 @@ const clickCounter = {
 
             switch (index) {
                 case 0:
-                    this.seconds = 15
+                    this.seconds = 2
                     this.events.restartGame()
                     break;
                 case 1:
-                    this.seconds = 20
+                    this.seconds = 3
                     this.events.restartGame()
                     break;
                 case 2:
-                    this.seconds = 30
+                    this.seconds = 4
                     this.events.restartGame()
+                    
                     break;
             }
 
@@ -174,72 +179,97 @@ const clickCounter = {
             `
         },
 
-        scoreInfo: function () {
-
-            const self = this
-
-            setTimeout(function () {
-
-
-                Swal.fire({
-                    title: "Bom trabalho!",
-                    text: `${self.clicks} cliques em ${self.seconds} segundos`,
-                    icon: "success",
-                    confirmButtonText: "Salvar",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    showDenyButton: true,
-                    denyButtonText: `Não salvar`
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        Swal.fire({
-                            icon: "success",
-                            title: "Seus pontos foram salvos!",
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            showCancelButton: false,
-                            showConfirmButton: false,
-                            showDenyButton: true,
-                            denyButtonText: "Fechar",
-
-                        });
-                    } else if (result.isDenied) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Seus pontos não foram salvos!",
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            showCancelButton: false,
-                            showConfirmButton: false,
-                            showDenyButton: true,
-                            denyButtonText: "Fechar",
-
-                        });
-                    }
-                })
-
-                clearInterval(interval)
-
-            }, this.milliseconds)
-
-
-            this.timeLeft = this.milliseconds / 1000
-
-            const interval = setInterval(this.events.timeLeft.bind(this), 1000)
+        scoreInfo: function (e) {
 
             this.clicks = 0
+            this.events.timeLeft()
+
+            this.$time.innerHTML = `<span>${this.events.secondsInterval}</span>`
+
         },
 
         timeLeft: function () {
-            this.timeLeft--
-            this.$time.innerHTML = `<span>${this.timeLeft}</span>`
+            const self = this.base()
+
+            this.secondsInterval = self.seconds
+
+            this.intervalId = setInterval(this.timeRemaining.bind(this), 1000)
+
+            this.timeOutId = setTimeout(this.popUp.bind(self), self.milliseconds)
+
+
         },
 
-        saveData: function () {
-            
+        popUp: function () {
+            const self = this
+
+            Swal.fire({
+                title: "Bom trabalho!",
+                text: `${self.clicks} cliques em ${self.seconds} segundos`,
+                icon: "success",
+                confirmButtonText: "Salvar",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                denyButtonText: `Não salvar`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Seus pontos foram salvos!",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        showDenyButton: true,
+                        denyButtonText: "Fechar",
+
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Seus pontos não foram salvos!",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        showCancelButton: false,
+                        showConfirmButton: false,
+                        showDenyButton: true,
+                        denyButtonText: "Fechar",
+
+                    });
+                }
+            })
+
+            self.events.restartGame()
+        },
+
+        timeRemaining: function () {
+            const self = this.base()
+            this.secondsInterval--
+            self.$time.innerHTML = `<span>${this.secondsInterval}</span>`
         },
 
         restartGame: function () {
+            const self = this.base()
+
+            if (this.timeOutId) {
+                self.clicks = 0
+                self.events.secondsInterval = self.seconds
+                clearTimeout(this.timeOutId)
+                clearInterval(this.intervalId)
+
+                console.log(this.timeOutId)
+
+                self.$circle.addEventListener('click', self.events.scoreInfo.bind(self), { once: true })
+               
+
+                self.$currentScore.innerHTML = `
+                    <span>
+                        <p>Cliques</p>
+                        <p>${self.clicks}</p>
+                    </span>            
+                `
+            }
             circleAnimation.animations.resetAnimation()
         }
     }
