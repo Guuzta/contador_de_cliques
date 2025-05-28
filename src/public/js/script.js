@@ -204,6 +204,7 @@ const clickCounter = {
 
         popUp: function () {
             const self = this
+            this.previousScore = self.clicks
 
             Swal.fire({
                 title: "Bom trabalho!",
@@ -225,8 +226,14 @@ const clickCounter = {
                         showConfirmButton: false,
                         showDenyButton: true,
                         denyButtonText: "Fechar",
-
                     });
+
+                    self.$previousScore.innerHTML = `
+                        <span>
+                            <p>Pontuação Anterior</p>
+                            <p>${this.previousScore}</p>
+                        </span>
+                    `
                 } else if (result.isDenied) {
                     Swal.fire({
                         icon: "error",
